@@ -8,10 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class MainActivity extends Activity implements OnClickListener{
 
 	private Button button;
+	private ProgressBar progressBar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_main);
 		
 		button = (Button) findViewById(R.id.button);
+		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 		button.setOnClickListener(this);
 	}
 
@@ -26,8 +29,18 @@ public class MainActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.button:
-				Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-				startActivity(intent);
+/*				Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+				startActivity(intent);*/
+				
+				// press the button to determine if a progressBar is needed to show
+				if (progressBar.getVisibility() == View.GONE) {
+					progressBar.setVisibility(View.VISIBLE);
+				} else {
+					progressBar.setVisibility(View.GONE);
+				}
+/*				int progress = progressBar.getProgress();
+				progress = progress + 10;
+				progressBar.setProgress(progress);*/
 				break;
 			default:
 				break;
