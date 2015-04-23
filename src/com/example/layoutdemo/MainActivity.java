@@ -1,19 +1,20 @@
 package com.example.layoutdemo;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ProgressBar;
+/*import android.widget.ProgressBar;*/
 
 public class MainActivity extends Activity implements OnClickListener{
 
 	private Button button;
-	private ProgressBar progressBar;
+/*	private ProgressBar progressBar;*/
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_main);
 		
 		button = (Button) findViewById(R.id.button);
-		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+/*		progressBar = (ProgressBar) findViewById(R.id.progress_bar);*/
 		button.setOnClickListener(this);
 	}
 
@@ -33,14 +34,32 @@ public class MainActivity extends Activity implements OnClickListener{
 				startActivity(intent);*/
 				
 				// press the button to determine if a progressBar is needed to show
-				if (progressBar.getVisibility() == View.GONE) {
+/*				if (progressBar.getVisibility() == View.GONE) {
 					progressBar.setVisibility(View.VISIBLE);
 				} else {
 					progressBar.setVisibility(View.GONE);
-				}
+				}*/
+				
 /*				int progress = progressBar.getProgress();
 				progress = progress + 10;
 				progressBar.setProgress(progress);*/
+				
+				AlertDialog.Builder dialog = new AlertDialog.Builder (MainActivity.this);
+				dialog.setTitle("This is Dialog");
+				dialog.setMessage("Something important.");
+				dialog.setCancelable(false);
+				dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+				
+				dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+				dialog.show();
 				break;
 			default:
 				break;
